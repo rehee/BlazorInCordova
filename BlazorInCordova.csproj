@@ -33,7 +33,7 @@
     </ItemGroup>
     <Copy SourceFiles="@(BlazorWWW)" DestinationFolder="$(CordovaRoot)www\%(recursivedir)" />
     <Exec WorkingDirectory="$(CordovaRoot)" Command="cordova platform add electron" />
-    <RemoveDir  Directories="$(CordovaRoot)www" />
+    <RemoveDir Directories="$(CordovaRoot)www" />
   </Target>
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
@@ -42,23 +42,31 @@
       <Filestocopy Include="$(publishurl)wwwroot\**\*.*" />
       <FilesDeleteWWW Include="$(CordovaRoot)www\" />
       <CordovaDist Include="dist" />
-      <FileCopyElectorn Include="$(CordovaRoot)platforms\electron\build\**\*.*"/>
-      <FileDeleteDist Include="dist\"/>
+      <FileCopyElectorn Include="$(CordovaRoot)platforms\electron\build\**\*.*" />
+      <FileDeleteDist Include="dist\" />
     </ItemGroup>
     <Exec WorkingDirectory="$(CordovaRoot)" Command="npm install" />
-    <RemoveDir  Directories="$(FilesDeleteWWW)" />
+    <RemoveDir Directories="$(FilesDeleteWWW)" />
 
     <Copy SourceFiles="@(Filestocopy)" DestinationFolder="$(CordovaRoot)www\%(recursivedir)" />
     <Exec WorkingDirectory="$(CordovaRoot)" Command="cordova build electron" />
-    <RemoveDir  Directories="$(FileDeleteDist)" />
+    <RemoveDir Directories="$(FileDeleteDist)" />
 
     <Copy SourceFiles="@(FileCopyElectorn)" DestinationFolder="dist\electorn\%(recursivedir)" />
 
   </Target>
   <ItemGroup>
+    <Content Remove="dist2\sample-data\weather.json" />
+    <Content Remove="dist2\_framework\blazor.boot.json" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.4" PrivateAssets="all" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dist2\sample-data\weather.json" />
+    <None Include="dist2\_framework\blazor.boot.json" />
   </ItemGroup>
 
 </Project>
