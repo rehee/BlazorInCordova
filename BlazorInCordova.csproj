@@ -56,8 +56,8 @@
 
   </Target>
   <ItemGroup>
-    <Content Remove="dist2\sample-data\weather.json" />
-    <Content Remove="dist2\_framework\blazor.boot.json" />
+    <Content Remove="docs\sample-data\weather.json" />
+    <Content Remove="docs\_framework\blazor.boot.json" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.4" />
@@ -65,8 +65,8 @@
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dist2\sample-data\weather.json" />
-    <None Include="dist2\_framework\blazor.boot.json" />
+    <None Include="docs\sample-data\weather.json" />
+    <None Include="docs\_framework\blazor.boot.json" />
   </ItemGroup>
 
 </Project>
