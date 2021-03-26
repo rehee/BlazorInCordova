@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <CordovaRoot>Cordova\</CordovaRoot>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,25 +28,30 @@
     </Exec>
     <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
     <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <ItemGroup>
+      <BlazorWWW Include="wwwroot\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(BlazorWWW)" DestinationFolder="$(CordovaRoot)www\%(recursivedir)" />
     <Exec WorkingDirectory="$(CordovaRoot)" Command="cordova platform add electron" />
+    <RemoveDir  Directories="$(CordovaRoot)www" />
   </Target>
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
 
     <ItemGroup>
       <Filestocopy Include="$(publishurl)wwwroot\**\*.*" />
-      <FilesDeleteWWW Include="$(CordovaRoot)www\**\*.*" />
+      <FilesDeleteWWW Include="$(CordovaRoot)www\" />
       <CordovaDist Include="dist" />
       <FileCopyElectorn Include="$(CordovaRoot)platforms\electron\build\**\*.*"/>
-      <FileDeleteDist Include="dist\**\*.*"/>
+      <FileDeleteDist Include="dist\"/>
     </ItemGroup>
     <Exec WorkingDirectory="$(CordovaRoot)" Command="npm install" />
-    <Delete Files="@(FilesDeleteWWW)" />
-    
+    <RemoveDir  Directories="$(FilesDeleteWWW)" />
+
     <Copy SourceFiles="@(Filestocopy)" DestinationFolder="$(CordovaRoot)www\%(recursivedir)" />
     <Exec WorkingDirectory="$(CordovaRoot)" Command="cordova build electron" />
-    <Delete Files="@(FileDeleteDist)" />
-    
+    <RemoveDir  Directories="$(FileDeleteDist)" />
+
     <Copy SourceFiles="@(FileCopyElectorn)" DestinationFolder="dist\electorn\%(recursivedir)" />
 
   </Target>
