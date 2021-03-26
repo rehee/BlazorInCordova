@@ -37,12 +37,15 @@
       <FilesDeleteWWW Include="$(CordovaRoot)www\**\*.*" />
       <CordovaDist Include="dist" />
       <FileCopyElectorn Include="$(CordovaRoot)platforms\electron\build\**\*.*"/>
+      <FileDeleteDist Include="dist\**\*.*"/>
     </ItemGroup>
     <Exec WorkingDirectory="$(CordovaRoot)" Command="npm install" />
     <Delete Files="@(FilesDeleteWWW)" />
     
     <Copy SourceFiles="@(Filestocopy)" DestinationFolder="$(CordovaRoot)www\%(recursivedir)" />
     <Exec WorkingDirectory="$(CordovaRoot)" Command="cordova build electron" />
+    <Delete Files="@(FileDeleteDist)" />
+    
     <Copy SourceFiles="@(FileCopyElectorn)" DestinationFolder="dist\electorn\%(recursivedir)" />
 
   </Target>
