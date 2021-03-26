@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorInCordova", "BlazorInCordova.csproj", "{B551605C-503B-40F4-9F10-8032A687E3C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B551605C-503B-40F4-9F10-8032A687E3C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B551605C-503B-40F4-9F10-8032A687E3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B551605C-503B-40F4-9F10-8032A687E3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B551605C-503B-40F4-9F10-8032A687E3C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2721F2C9-97DB-408B-AE06-39E3E2CF6987}
+	EndGlobalSection
+EndGlobal
