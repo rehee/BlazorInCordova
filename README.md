@@ -2,6 +2,10 @@
 
 这个项目的想法是在学习blazor的时候突然想到为什么不能吧blazor扔进cordova里面呢. 看到微软的路线图,混合应用也在线路里面所以我想尝试一下. 网上搜索了一下 发现已经有大哥在多年前就尝试过了https://medium.com/@bickellukas98/blazor-cordova-a3b0a6c3bf10. 遇到了不少坑但是也成功了. 我在想这个已经是好多年之前了. 所以我想尝试一下.
 
+##感谢友人提醒
+有些网站比如https://appmaker.xyz/pwa-to-apk/ 可以通过将网站 https://rehee.github.io/BlazorInCordova/ 换成apk包
+利用这个网站将这个项目转换成了安卓结果成功了.(虽然有白边)
+
 ## 步骤
 1. 创建一个新的blazor assemby 项目
 2. 在项目中创建一个cordova项目
